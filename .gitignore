@@ -1,0 +1,10 @@
+# Build artifacts
+target/
+*.wasm
+
+# Grammar checkouts (managed by Zed during build)
+grammars/tau/
+grammars/json/
+
+# Languages directory (tree-sitter grammar sources, not needed in extension repo)
+languages/

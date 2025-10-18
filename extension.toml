@@ -1,0 +1,16 @@
+id = "tau"
+name = "Tau"
+version = "0.0.10"
+schema_version = 1
+authors = ["Nicolò Santamaria <nicolo.santamaria@proton.me>"]
+description = "Tau language support (LSP via tau-lsp)"
+
+# Register local grammar for development
+[grammars.tau]
+repository = "file:///home/speedking/Documenti/tree-sitter-tau"
+rev = "f9ef1d1b955185a30949e07d646c8227428a77ff"
+
+# Wire the LSP to the language "Tau" (defined in languages/tau/config.toml)
+[language_servers."tau-lsp"]
+name = "Tau LSP"
+languages = ["Tau"]
