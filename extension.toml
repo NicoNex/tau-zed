@@ -7,8 +7,8 @@ description = "Tau language support (LSP via tau-lsp)"
 
 # Register local grammar for development
 [grammars.tau]
-repository = "file:///home/speedking/Documenti/tree-sitter-tau"
-rev = "f9ef1d1b955185a30949e07d646c8227428a77ff"
+repository = "https://github.com/NicoNex/tree-sitter-tau"
+rev = "a783afb42bad74ba104d2517cc7c6138c3d7e12f"
 
 # Wire the LSP to the language "Tau" (defined in languages/tau/config.toml)
 [language_servers."tau-lsp"]
