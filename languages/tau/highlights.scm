@@ -30,6 +30,7 @@
 (raw_string) @string
 (escaped_string) @string
 (escape_sequence) @string.escape
+(escaped_brace) @string.escape
 
 ; The braces of an interpolation belong to the string, what is between them is
 ; ordinary code and is highlighted as such.
