@@ -6,5 +6,7 @@ target/
 grammars/tau/
 grammars/json/
 
-# Languages directory (tree-sitter grammar sources, not needed in extension repo)
-languages/
+# The grammar is built by Zed from the repository named in extension.toml.
+# languages/ is not ignored: Zed reads the language config and the queries
+# from there, and an extension without them highlights nothing.
+languages/*/node_modules/

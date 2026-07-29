@@ -1,0 +1,16 @@
+name = "Tau"
+grammar = "tau"
+path_suffixes = ["tau"]
+line_comments = ["#"]
+tab_size = 4
+hard_tabs = true
+
+# The pairs the editor closes on its own, and the ones it does not close
+# inside a string or a comment.
+brackets = [
+  { start = "{", end = "}", close = true, newline = true },
+  { start = "[", end = "]", close = true, newline = true },
+  { start = "(", end = ")", close = true, newline = true },
+  { start = "\"", end = "\"", close = true, newline = false, not_in = ["string", "comment"] },
+  { start = "`", end = "`", close = true, newline = false, not_in = ["string", "comment"] },
+]
