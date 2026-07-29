@@ -38,6 +38,27 @@
   "{" @punctuation.special
   "}" @punctuation.special)
 
+; Names
+;
+; Where two patterns capture the same node the LAST one wins, so these go from
+; the most general to the most precise: the catch-all first, whatever knows
+; better after it.
+
+; Everything that is a name is a variable until something says otherwise.
+(identifier) @variable
+
+; The builtins, which are functions nobody declared. Here they are still bare
+; names used as values; called ones are captured again at the end.
+((identifier) @function.builtin
+  (#match? @function.builtin "^(len|println|print|input|string|error|type|int|float|exit|append|new|failed|plugin|native|pipe|send|recv|close|hex|oct|bin|slice|keys|delete|bytes)$"))
+
+(parameters (identifier) @variable.parameter)
+
+; Objects and their fields
+
+(member property: (identifier) @property)
+(map_entry key: (identifier) @property)
+
 ; Functions
 ;
 ; A function has no name of its own: it is a value, and its name is whatever
@@ -56,20 +77,10 @@
 (call
   function: (member property: (identifier) @function.method))
 
-; The builtins, which are functions nobody declared.
-((identifier) @function.builtin
+; A called builtin, after the plain call so that it keeps its own colour.
+((call
+  function: (identifier) @function.builtin)
   (#match? @function.builtin "^(len|println|print|input|string|error|type|int|float|exit|append|new|failed|plugin|native|pipe|send|recv|close|hex|oct|bin|slice|keys|delete|bytes)$"))
-
-(parameters (identifier) @variable.parameter)
-
-; Objects and their fields
-
-(member property: (identifier) @property)
-(map_entry key: (identifier) @property)
-
-; Everything else that is a name is a variable. It comes last because a
-; capture only wins where nothing more precise matched.
-(identifier) @variable
 
 ; Operators
 
