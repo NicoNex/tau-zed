@@ -1,6 +1,6 @@
 id = "tau"
 name = "Tau"
-version = "0.0.11"
+version = "0.0.12"
 schema_version = 1
 authors = ["Nicolò Santamaria <nicolo.santamaria@proton.me>"]
 description = "Tau language support (LSP via tau-lsp)"
@@ -8,7 +8,7 @@ description = "Tau language support (LSP via tau-lsp)"
 # Register local grammar for development
 [grammars.tau]
 repository = "https://github.com/NicoNex/tree-sitter-tau"
-rev = "77252225b64a5516df87c9c0130d62205caad686"
+rev = "8c5a771d8966be18fb7e64ee58e4d0ecc88a47ab"
 
 # Wire the LSP to the language "Tau" (defined in languages/tau/config.toml)
 [language_servers."tau-lsp"]
