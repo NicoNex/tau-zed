@@ -56,6 +56,25 @@ directory. Zed clones the grammar at that `rev`, builds it to wasm and loads
 the queries from `languages/tau/`. It rebuilds on every change to this
 directory, so leave it installed while working.
 
+### When it says `failed to compile grammar 'tau'`
+
+The toast says nothing useful, the log does: `~/.local/share/zed/logs/Zed.log`,
+the lines from `extension_builder`.
+
+The usual cause is not the grammar but `grammars/tau/`, the clone Zed keeps
+here between builds. It is a working copy like any other and Zed only ever
+runs `git checkout <rev>` in it, so anything that dirties it — a stray
+`chmod -R`, an editor rewriting line endings — makes that checkout refuse and
+the build stops before the compiler is ever reached. Nothing in there is
+worth keeping, it is a clone of a public repository at the commit named in
+`extension.toml`:
+
+```sh
+rm -rf grammars/tau grammars/tau.wasm
+```
+
+and install the dev extension again.
+
 `debug: open syntax tree view` from the palette shows the parse tree of the
 file next to it and follows the cursor. An `ERROR` node means the grammar is
 missing something, and the word is not highlighted because nothing parsed it,
